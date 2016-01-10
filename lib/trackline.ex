@@ -1,15 +1,37 @@
-require IEx
-
 defmodule Trackline do
   @moduledoc """
-  Starting point for our journey. Get it?
+  A GPX parser that returns raw GPX point structs.
   """
 
   defmodule Runner do
+    @moduledoc """
+    Kicks off the parsing functions.
+    """
+    require Record
+    Record.defrecord :xmlAttribute,
+      Record.extract(:xmlAttribute, from_lib: "xmerl/include/xmerl.hrl")
+
     def run(file_path) do
-      e = Exmerl.parse(file_path)
-      IEx.pry
-      true
+      doc = Exmerl.parse(file_path)
+      doc
+        |> Exmerl.XPath.find("//trkpt")
+        |> elem(0)
+        |> List.foldl([], fn (x, acc) ->
+          lat = x
+                |> Exmerl.XPath.find("//@lat")
+                |> text
+                |> Float.parse
+                |> elem(0)
+          lon = x |> Exmerl.XPath.find("//@lon")
+                  |> text
+                  |> Float.parse
+                  |> elem(0)
+          acc ++ [%{lat: lat, lon: lon}]
+        end)
+    end
+
+    def text([xmlAttribute(value: value)]) do
+      List.to_string(value)
     end
   end
 end

@@ -28,8 +28,10 @@ defmodule Trackline.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [ {:erlsom, "~>1.2"},
+      {:exml, "~> 0.1"},
       {:exmerl, "~> 0.1"},
       {:mix_test_watch, "~> 0.2", only: :dev},
-      {:dogma, "~> 0.0", only: :dev} ]
+      {:dogma, "~> 0.0", only: :dev},
+      {:apex, "~> 0.3.5"} ]
   end
 end
