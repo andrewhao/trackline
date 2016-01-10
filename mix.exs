@@ -5,8 +5,10 @@ defmodule Trackline.Mixfile do
     [app: :trackline,
      version: "0.0.1",
      elixir: "~> 1.1",
+     description: "A GPX parser for Elixir.",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package,
      deps: deps]
   end
 
@@ -15,6 +17,14 @@ defmodule Trackline.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [applications: [:logger]]
+  end
+
+  defp package do
+    [# These are the default files included in the package
+      files: ["lib", "mix.exs", "README*", "readme*", "LICENSE*", "license*"],
+      maintainers: ["Andrew Hao"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/andrewhao/trackline"}]
   end
 
   # Dependencies can be Hex packages:
