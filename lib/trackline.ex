@@ -3,6 +3,10 @@ defmodule Trackline do
   A GPX parser that returns raw GPX point structs.
   """
 
+  defmodule TrackPoint do
+    defstruct lat: nil, lon: nil
+  end
+
   defmodule Runner do
     @moduledoc """
     Kicks off the parsing functions.
@@ -26,7 +30,7 @@ defmodule Trackline do
                   |> text
                   |> Float.parse
                   |> elem(0)
-          acc ++ [%{lat: lat, lon: lon}]
+          acc ++ [%TrackPoint{lat: lat, lon: lon}]
         end)
     end
 
