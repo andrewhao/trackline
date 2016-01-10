@@ -9,12 +9,12 @@
     <number>82</number>
     <trkseg>
       <trkpt lat="1.0" lon="2.0">
-        <ele>35.706055</ele>
+        <ele>35.0</ele>
         <time>2007-11-23T23:49:43Z</time>
       </trkpt>
       <trkpt lat="3.0" lon="4.0">
-        <ele>35.706055</ele>
-        <time>2007-11-23T23:49:43Z</time>
+        <ele>35.1</ele>
+        <time>2007-11-23T23:49:44Z</time>
       </trkpt>
     </trkseg>
   </trk>

@@ -32,6 +32,9 @@ defmodule Trackline.Mixfile do
       {:exmerl, "~> 0.1"},
       {:mix_test_watch, "~> 0.2", only: :dev},
       {:dogma, "~> 0.0", only: :dev},
-      {:apex, "~> 0.3.5"} ]
+      {:timex, "~> 1.0.0"},
+      {:apex, "~> 0.3.5"},
+      {:dialyxir, "~> 0.3", only: [:dev]}
+    ]
   end
 end
