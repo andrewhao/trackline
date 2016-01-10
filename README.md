@@ -1,6 +1,8 @@
 # Trackline
 
-**TODO: Add description**
+GPX parsing and stats.
+
+[![Build Status](https://travis-ci.org/andrewhao/trackline.svg)](https://travis-ci.org/andrewhao/trackline)
 
 ## Installation
 
