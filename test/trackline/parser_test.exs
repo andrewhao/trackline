@@ -1,7 +1,7 @@
-defmodule TracklineTest do
+defmodule Trackline.ParserTest do
   use ExUnit.Case
   use Timex
-  doctest Trackline
+  doctest Trackline.Parser
 
   test "Parser returns a set of trackpoints" do
     test_file_path = 'test/gpx/simple.gpx'
