@@ -8,8 +8,18 @@ defmodule Trackline.Calculator do
   # Earth mean radius, kilometers.
   @earth_radius 6371
 
-  @spec track_distance(List<Trackpoint>) :: float()
-  def track_distance()
+  @spec track_distance([Trackpoint.t]) :: float()
+  def track_distance(points) do
+    {history: _, distance: distance} = points
+    |> List.foldl(%{history: nil, distance: 0.0}, fn {acc, p} ->
+      history = acc[:history]
+      distance = acc[:distance]
+      delta_distance = haversine_distance(history, p)
+      acc = %{ acc | history: p}
+      acc = %{ acc | distance: distance + delta_distance}
+    end)
+    distance
+  end
 
   # https://en.wikipedia.org/wiki/Haversine_formula
   @spec haversine_distance(Trackpoint.t, Trackpoint.t) :: float()
@@ -28,7 +38,7 @@ defmodule Trackline.Calculator do
     @earth_radius * c
   end
 
-  @spec to_r(Float) :: float()
+  @spec to_r(float()) :: float()
   def to_r(latlon) do
     (latlon * :math.pi) / 180.0
   end
